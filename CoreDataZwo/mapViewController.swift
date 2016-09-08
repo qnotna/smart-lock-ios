@@ -41,7 +41,7 @@ class mapViewController : UIViewController, MKMapViewDelegate, CLLocationManager
             let results = try managedContext.executeFetchRequest(fetchRequest)
             locationNames = results as! [NSManagedObject] // Schlössernamen als CoreData
             for locationNames in results {
-                annotation.title = "\(locationNames.valueForKey("nameItem") as? String)"
+                annotation.title = "\(locationNames.valueForKey("nameItem") as! String)"
             }
         }
         catch {
