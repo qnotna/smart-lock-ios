@@ -23,11 +23,11 @@ class mapViewController : UIViewController, MKMapViewDelegate, CLLocationManager
     var locationManager: CLLocationManager!
     
     @IBAction func openPopOver(_ sender: UIBarButtonItem) {
-        let popOverViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MapPopUpID") as! popUpViewController
-        self.addChildViewController(popOverViewController)
-        popOverViewController.view.frame = self.view.frame
-        self.view.addSubview(popOverViewController.view)
-        popOverViewController.didMove(toParentViewController: self)
+        let mapPopOverViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MapPopUpID") as! mapPopUpViewController
+        self.addChildViewController(mapPopOverViewController)
+        mapPopOverViewController.view.frame = self.view.frame
+        self.view.addSubview(mapPopOverViewController.view)
+        mapPopOverViewController.didMove(toParentViewController: self)
        }
     
     func showLocationAnntotaions() {

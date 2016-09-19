@@ -10,7 +10,7 @@ import CoreData
 import UIKit
 import Foundation
 
-class popUpViewController : UIViewController {
+class mapPopUpViewController : UIViewController {
     
     @IBOutlet weak var viewController: UITableView!
     @IBOutlet weak var tableView: UITableView!

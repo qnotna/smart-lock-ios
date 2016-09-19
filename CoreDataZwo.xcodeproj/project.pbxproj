@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		BF2503CB1D78425A00B6C1AA /* ansichtTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2503CA1D78425A00B6C1AA /* ansichtTableViewController.swift */; };
 		BF2503CD1D78770300B6C1AA /* mapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2503CC1D78770300B6C1AA /* mapViewController.swift */; };
-		BF2503D51D78B6B800B6C1AA /* popUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2503D41D78B6B800B6C1AA /* popUpViewController.swift */; };
+		BF2503D51D78B6B800B6C1AA /* mapPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2503D41D78B6B800B6C1AA /* mapPopUpViewController.swift */; };
 		BF2503DA1D7AFB9400B6C1AA /* hinzufügenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2503D91D7AFB9400B6C1AA /* hinzufügenViewController.swift */; };
 		BF2503DC1D7B096D00B6C1AA /* startseiteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2503DB1D7B096D00B6C1AA /* startseiteTableViewController.swift */; };
+		BF4FE69C1D90707E003BFA46 /* morePopUpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4FE69B1D90707E003BFA46 /* morePopUpTableViewController.swift */; };
 		BFC3ED801D78204200BAC946 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC3ED7F1D78204200BAC946 /* AppDelegate.swift */; };
 		BFC3ED851D78204200BAC946 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFC3ED831D78204200BAC946 /* Main.storyboard */; };
 		BFC3ED881D78204200BAC946 /* CoreDataZwo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFC3ED861D78204200BAC946 /* CoreDataZwo.xcdatamodeld */; };
@@ -45,9 +46,10 @@
 /* Begin PBXFileReference section */
 		BF2503CA1D78425A00B6C1AA /* ansichtTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ansichtTableViewController.swift; sourceTree = "<group>"; };
 		BF2503CC1D78770300B6C1AA /* mapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mapViewController.swift; sourceTree = "<group>"; };
-		BF2503D41D78B6B800B6C1AA /* popUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = popUpViewController.swift; sourceTree = "<group>"; };
+		BF2503D41D78B6B800B6C1AA /* mapPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mapPopUpViewController.swift; sourceTree = "<group>"; };
 		BF2503D91D7AFB9400B6C1AA /* hinzufügenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "hinzufügenViewController.swift"; sourceTree = "<group>"; };
 		BF2503DB1D7B096D00B6C1AA /* startseiteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = startseiteTableViewController.swift; sourceTree = "<group>"; };
+		BF4FE69B1D90707E003BFA46 /* morePopUpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = morePopUpTableViewController.swift; sourceTree = "<group>"; };
 		BFC3ED7C1D78204100BAC946 /* CoreDataZwo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataZwo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFC3ED7F1D78204200BAC946 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFC3ED841D78204200BAC946 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -96,7 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				BF2503CC1D78770300B6C1AA /* mapViewController.swift */,
-				BF2503D41D78B6B800B6C1AA /* popUpViewController.swift */,
+				BF2503D41D78B6B800B6C1AA /* mapPopUpViewController.swift */,
 			);
 			name = Maps;
 			sourceTree = "<group>";
@@ -195,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				BFD45BED1D7C89A300668D06 /* moreTableViewController.swift */,
+				BF4FE69B1D90707E003BFA46 /* morePopUpTableViewController.swift */,
 				BFD45BF11D7CA4DA00668D06 /* animationTableViewCell.swift */,
 			);
 			name = More;
@@ -339,11 +342,12 @@
 			files = (
 				BF2503DC1D7B096D00B6C1AA /* startseiteTableViewController.swift in Sources */,
 				BFC3ED881D78204200BAC946 /* CoreDataZwo.xcdatamodeld in Sources */,
+				BF4FE69C1D90707E003BFA46 /* morePopUpTableViewController.swift in Sources */,
 				BFD45BEB1D7C55AF00668D06 /* setPasswordTableViewController.swift in Sources */,
 				BF2503CD1D78770300B6C1AA /* mapViewController.swift in Sources */,
 				BFD45BF21D7CA4DA00668D06 /* animationTableViewCell.swift in Sources */,
 				BFD45BE81D7B935F00668D06 /* farbeTableViewController.swift in Sources */,
-				BF2503D51D78B6B800B6C1AA /* popUpViewController.swift in Sources */,
+				BF2503D51D78B6B800B6C1AA /* mapPopUpViewController.swift in Sources */,
 				BFD45BEE1D7C89A300668D06 /* moreTableViewController.swift in Sources */,
 				BF2503CB1D78425A00B6C1AA /* ansichtTableViewController.swift in Sources */,
 				BF2503DA1D7AFB9400B6C1AA /* hinzufügenViewController.swift in Sources */,

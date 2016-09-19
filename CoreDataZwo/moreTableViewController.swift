@@ -25,8 +25,23 @@ class moreTableViewController: UITableViewController {
         imageView.startAnimating()
     }
 
+     func tableView(tableView: UITableView,
+                            didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        
+        if indexPath.row == 2 {
+            
+            let morePopOverViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MorePopUpID") as! morePopUpTableViewController
+            self.addChildViewController(morePopOverViewController)
+            morePopOverViewController.view.frame = self.view.frame
+            self.view.addSubview(morePopOverViewController.view)
+            morePopOverViewController.didMove(toParentViewController: self)
+        }
+        
+        else {}
+    }
     
-    override func viewDidLoad() {        
+    override func viewDidLoad() {
         let nib = UINib(nibName: "animationTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "animationCell")
         super.viewDidLoad()
