@@ -15,37 +15,37 @@ class popUpViewController : UIViewController {
     @IBOutlet weak var viewController: UITableView!
     @IBOutlet weak var tableView: UITableView!
    
-    @IBAction func closePopUp(sender: UIBarButtonItem) {
+    @IBAction func closePopUp(_ sender: UIBarButtonItem) {
         self.view.removeFromSuperview()
     }
     
     var searchNameItems = [NSManagedObject]()
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchNameItems.count
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
         self.view.removeFromSuperview()
-        let cell = tableView.dequeueReusableCellWithIdentifier("searchCell")! as UITableViewCell
-        let item = searchNameItems[indexPath.row]
-        cell.textLabel?.text = item.valueForKey("nameItem") as? String
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell")! as UITableViewCell
+        let item = searchNameItems[(indexPath as NSIndexPath).row]
+        cell.textLabel?.text = item.value(forKey: "nameItem") as? String
         return cell
     }
         
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("searchCell")! as UITableViewCell
-        let item = searchNameItems[indexPath.row]
-        cell.textLabel?.text = item.valueForKey("nameItem") as? String
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell")! as UITableViewCell
+        let item = searchNameItems[(indexPath as NSIndexPath).row]
+        cell.textLabel?.text = item.value(forKey: "nameItem") as? String
         return cell
     }
     
-    override func viewWillAppear(animated: Bool) {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    override func viewWillAppear(_ animated: Bool) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
-        let fetchRequest = NSFetchRequest(entityName: "NameListEntity")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "NameListEntity")
         do {
-            let results = try managedContext.executeFetchRequest(fetchRequest)
+            let results = try managedContext.fetch(fetchRequest)
             searchNameItems = results as! [NSManagedObject]
         }
         catch {
@@ -54,7 +54,7 @@ class popUpViewController : UIViewController {
     }
 
     override func viewDidLoad() {
-        self.navigationController?.navigationBarHidden = true;
+        self.navigationController?.isNavigationBarHidden = true;
         view.backgroundColor = UIColor(white: 1, alpha: 0.0)
         super.viewDidLoad()
     }

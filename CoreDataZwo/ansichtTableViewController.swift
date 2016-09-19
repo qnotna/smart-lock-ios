@@ -19,14 +19,14 @@ class ansichtTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate // CoreData Delegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate // CoreData Delegate
         let managedContext = appDelegate.managedObjectContext // CoreData AppDelegate
-        let fetchRequest = NSFetchRequest(entityName: "NameListEntity") // CoreData Entity
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "NameListEntity") // CoreData Entity
         do {
-            let results = try managedContext.executeFetchRequest(fetchRequest)
+            let results = try managedContext.fetch(fetchRequest)
             nameItems = results as! [NSManagedObject] // Schlössernamen als CoreData
             for nameItems in results {
-                nameLabel.text = nameItems.valueForKey("nameItem") as? String
+                nameLabel.text = (nameItems as AnyObject).value(forKey: "nameItem") as? String
             }
         }
         catch {

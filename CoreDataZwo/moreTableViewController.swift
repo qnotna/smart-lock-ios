@@ -13,7 +13,7 @@ class moreTableViewController: UITableViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     
-    func startAnimation(sender: UIBarButtonItem) {
+    func startAnimation(_ sender: UIBarButtonItem) {
         var bilderNamen = ["animation 1","animation 2","animation 3","animation 4","animation 5","animation 6","animation 7","animation 8","animation 9","animation 10","animation 11"]
         
         var bilder = [UIImage]()
@@ -28,7 +28,7 @@ class moreTableViewController: UITableViewController {
     
     override func viewDidLoad() {        
         let nib = UINib(nibName: "animationTableViewCell", bundle: nil)
-        tableView.registerNib(nib, forCellReuseIdentifier: "animationCell")
+        tableView.register(nib, forCellReuseIdentifier: "animationCell")
         super.viewDidLoad()
     }
    

@@ -18,15 +18,15 @@ class farbeTableViewController : UITableViewController {
     
     @IBOutlet weak var displayLabel: UILabel!
     
-    @IBAction func rotSliderAction(sender: UISlider) {
+    @IBAction func rotSliderAction(_ sender: UISlider) {
         changeColors()
     }
     
-    @IBAction func grünSliderAction(sender: UISlider) {
+    @IBAction func grünSliderAction(_ sender: UISlider) {
         changeColors()
     }
     
-    @IBAction func blauSliderAction(sender: UISlider) {
+    @IBAction func blauSliderAction(_ sender: UISlider) {
         changeColors()
     }
 

@@ -13,11 +13,11 @@ import UIKit
 class setPasswordTableViewController : UIViewController {
     
     func saveItem() {
-        performSegueWithIdentifier("segueToHinzufügenViewController", sender: nil)
+        performSegue(withIdentifier: "segueToHinzufügenViewController", sender: nil)
     }
     
     override func viewDidLoad() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: #selector(setPasswordTableViewController.saveItem)) // Button hinzufügen
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(setPasswordTableViewController.saveItem)) // Button hinzufügen
         self.saveItem()
         super.viewDidLoad()
     }

@@ -17,28 +17,28 @@ class hinzufügenTableViewController : UITableViewController {
     var nameItems = [NSManagedObject]()
     
     override func viewDidLoad() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: #selector(hinzufügenTableViewController.doneSavingItem)) // Button hinzufügen
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: #selector(hinzufügenTableViewController.cancelSavingItem)) // Button hinzufügen
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(hinzufügenTableViewController.doneSavingItem)) // Button hinzufügen
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(hinzufügenTableViewController.cancelSavingItem)) // Button hinzufügen
      //   self.addItem()
         super.viewDidLoad()
     }
     
-    func doneSavingItem(sender: AnyObject) {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate // CoreData Delegate
+    func doneSavingItem(_ sender: AnyObject) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate // CoreData Delegate
         let managedContext = appDelegate.managedObjectContext // CoreData AppDelegate
-        let entity = NSEntityDescription.entityForName("NameListEntity", inManagedObjectContext: managedContext) // CoreData Entity
-        let item = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext) // Speichern als CoreData Entity
+        let entity = NSEntityDescription.entity(forEntityName: "NameListEntity", in: managedContext) // CoreData Entity
+        let item = NSManagedObject(entity: entity!, insertInto: managedContext) // Speichern als CoreData Entity
         item.setValue(newNameItemsTextField.text!, forKey: "nameItem") // CoreData Attribute
         do {
             try managedContext.save()
         } catch {
             print ("Error")
         }
-        performSegueWithIdentifier("segueDoneToStartseiteTableViewController", sender: nil)
+        performSegue(withIdentifier: "segueDoneToStartseiteTableViewController", sender: nil)
     }
     
-    func cancelSavingItem(sender: AnyObject) {
-        performSegueWithIdentifier("segueCancelToStartseiteTableViewController", sender: nil)
+    func cancelSavingItem(_ sender: AnyObject) {
+        performSegue(withIdentifier: "segueCancelToStartseiteTableViewController", sender: nil)
     }
     
     override func didReceiveMemoryWarning() {

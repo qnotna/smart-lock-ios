@@ -22,26 +22,26 @@ class mapViewController : UIViewController, MKMapViewDelegate, CLLocationManager
     
     var locationManager: CLLocationManager!
     
-    @IBAction func openPopOver(sender: UIBarButtonItem) {
-        let popOverViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("MapPopUpID") as! popUpViewController
+    @IBAction func openPopOver(_ sender: UIBarButtonItem) {
+        let popOverViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MapPopUpID") as! popUpViewController
         self.addChildViewController(popOverViewController)
         popOverViewController.view.frame = self.view.frame
         self.view.addSubview(popOverViewController.view)
-        popOverViewController.didMoveToParentViewController(self)
+        popOverViewController.didMove(toParentViewController: self)
        }
     
     func showLocationAnntotaions() {
         let location = CLLocationCoordinate2DMake(51.06415,	13.75706)
         let annotation = MKPointAnnotation()
 
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate // CoreData Delegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate // CoreData Delegate
         let managedContext = appDelegate.managedObjectContext // CoreData AppDelegate
-        let fetchRequest = NSFetchRequest(entityName: "NameListEntity") // CoreData Entity
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "NameListEntity") // CoreData Entity
         do {
-            let results = try managedContext.executeFetchRequest(fetchRequest)
+            let results = try managedContext.fetch(fetchRequest)
             locationNames = results as! [NSManagedObject] // Schlössernamen als CoreData
             for locationNames in results {
-                annotation.title = "\(locationNames.valueForKey("nameItem") as! String)"
+                annotation.title = "\((locationNames as AnyObject).value(forKey: "nameItem") as! String)"
             }
         }
         catch {
@@ -70,7 +70,7 @@ class mapViewController : UIViewController, MKMapViewDelegate, CLLocationManager
        
     }
 
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let regionToZoom = MKCoordinateRegionMake((manager.location?.coordinate)!, MKCoordinateSpanMake(10,10))
         MapView.setRegion(regionToZoom, animated: true)
         locationManager.stopUpdatingLocation()
