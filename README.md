@@ -23,12 +23,11 @@ SmartLock is a counter part to an Arduino-equipped bycicle lock. While the main 
 
 ### Creating a new lock profile
 
-<div class="pair">
-	<img src="./doc/configure.png" alt="Configuring a new lock" >
-	<img src="./doc/locked.png" alt="Enter passcode" >
-</div>
+<img src="./doc/configure.png" alt="Configuring a new lock" width="300px">
 
 > Fig. 1: Configuring a new lock
+
+<img src="./doc/locked.png" alt="Enter passcode" width="300px">
 
 > Fig. 2: Passcode prompt
 
@@ -36,12 +35,11 @@ On connection to the lock, the user gets prompted to create and customize a prof
 
 ### Finding a lost lock
 
-<div class="pair">
-	<img src="./doc/location.png" alt="View lock metadata" >
-	<img src="./doc/find.png" alt="Find a lock" >
-</div>
+<img src="./doc/location.png" alt="View lock metadata" width="300px">
 
 > Fig. 3: View lock metadata
+
+<img src="./doc/find.png" alt="Find a lock" width="300px">
 
 > Fig. 4: Lock location on map
 
@@ -51,12 +49,11 @@ A notification will be sent reminding the user if a recently locked lock is lost
 
 ### Connecting to a lock
 
-<div class="pair">
-	<img src="./doc/list.png" alt="Empty list of locks" >
-	<img src="./doc/new-lock.png" alt="New Lock" >
-</div>
+<img src="./doc/list.png" alt="Empty list of locks" width="300px">
 
 > Fig. 5: No locks are configured
+
+<img src="./doc/new-lock.png" alt="New Lock" width="300px">
 
 > Fig. 6: Pseudo-pairing
 
@@ -65,14 +62,3 @@ This is the part I never actually implemented. For demoing purposes, the view co
 ## Deprecation warning
 
 > ⚠️ This project is not well documented and contains source code developed with ```Swift 3.x``` when I barely knew programming. It has to be migrated to a newer Swift version and needs a lot of refactoring.
-
-<style>
-	.pair { }
-	.pair > img { 
-		display: inline-flex;
-	}
-	.pair > * {
-		padding: 1em 0.5em;
-		height: 500px;
-	}
-</style>
