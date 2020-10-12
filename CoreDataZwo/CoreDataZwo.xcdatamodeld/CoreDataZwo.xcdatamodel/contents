@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15A284" minimumToolsVersion="Automatic">
-    <entity name="NameListEntity" syncable="YES">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="16A323" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ColorEntity" representedClassName="ColorEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="blueItem" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="greenItem" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="redItem" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="CoordninatesEntity" representedClassName="CoordninatesEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="adressItem" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastConnectionItem" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="latitudeItem" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="longitudeItem" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="NameEntity" representedClassName="NameEntity" syncable="YES" codeGenerationType="class">
         <attribute name="nameItem" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="PasswordEntity" representedClassName="PasswordEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="identifierItem" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="passwordItem" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="passwordTypeItem" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sharingStateItem" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="touchIDStateItem" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="NameListEntity" positionX="-36" positionY="9" width="128" height="60"/>
+        <element name="ColorEntity" positionX="124" positionY="-36" width="128" height="90"/>
+        <element name="CoordninatesEntity" positionX="-243" positionY="-36" width="128" height="105"/>
+        <element name="NameEntity" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="PasswordEntity" positionX="-63" positionY="-183" width="128" height="120"/>
     </elements>
 </model>

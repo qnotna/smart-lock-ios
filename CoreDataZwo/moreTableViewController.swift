@@ -8,12 +8,14 @@
 
 import Foundation
 import UIKit
+import AudioToolbox
 
 class moreTableViewController: UITableViewController {
     
+    @IBOutlet weak var deleteCell: UITableViewCell!
     @IBOutlet weak var imageView: UIImageView!
     
-    func startAnimation(_ sender: UIBarButtonItem) {
+    func startAnimation() {
         var bilderNamen = ["animation 1","animation 2","animation 3","animation 4","animation 5","animation 6","animation 7","animation 8","animation 9","animation 10","animation 11"]
         
         var bilder = [UIImage]()
@@ -21,33 +23,79 @@ class moreTableViewController: UITableViewController {
             bilder.append(UIImage(named: bilderNamen[i])!)
         }
         imageView.animationImages = bilder
-        imageView.animationDuration = 0.5
+        imageView.animationDuration = 5
         imageView.startAnimating()
     }
+    
+    @IBOutlet weak var vibrationSwitch: UISwitch!
 
-     func tableView(tableView: UITableView,
-                            didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        
-        if indexPath.row == 2 {
-            
-            let morePopOverViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MorePopUpID") as! morePopUpTableViewController
-            self.addChildViewController(morePopOverViewController)
-            morePopOverViewController.view.frame = self.view.frame
-            self.view.addSubview(morePopOverViewController.view)
-            morePopOverViewController.didMove(toParentViewController: self)
+    @IBAction func toggleVibrationSwitch(_ sender: UISwitch) {
+        if vibrationSwitch.isOn {
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+        } else {
+            print("Vibration deaktiviert")
         }
+    }
+  
+    
+  /*   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == 3 {
+            view.backgroundColor = UIColor(white: 0, alpha: 0.25)
+            performSegue(withIdentifier: "segueToRingtoneContainerViewController", sender: Any.self)
+
+        } else {}
+    }
+  */
+    @IBOutlet weak var deletingActivityIndicator: UIActivityIndicatorView!
+ 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        else {}
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.section == 2 && indexPath.row == 0 {
+            let alertController = UIAlertController(title: nil, message: "Das auf dem Schloss angelegte Datenprofil wirklich unwiederruflich entfernen?", preferredStyle: .actionSheet)
+            let cancelAction = UIAlertAction(title: "Abbrechen", style: .cancel) { (action) in
+                print("Abbrechen")
+            }
+            alertController.addAction(cancelAction)
+            let destroyAction = UIAlertAction(title: "Entfernen", style: .destructive) { (action) in
+                print("Löschen")
+                self.deletingActivityIndicator.isHidden = false
+                self.deletingActivityIndicator.startAnimating()
+                self.stopActivityIndicator()
+                self.deleteCell.accessoryType = .none
+            }
+            alertController.addAction(destroyAction)
+            self.present(alertController, animated: true) {
+            }
+            print("didSelectDelete")
+        } else {}
+      
+
     }
     
+      func stopActivityIndicator() {
+        if #available(iOS 10.0, *) {
+            let timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { (timer) in
+                self.deletingActivityIndicator.isHidden = true
+                self.deletingActivityIndicator.stopAnimating()
+                self.deleteCell.accessoryType = .checkmark
+
+            }
+        } else { }
+            // Earlier versions
+        }
+    
     override func viewDidLoad() {
-        let nib = UINib(nibName: "animationTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "animationCell")
+        self.deletingActivityIndicator.isHidden = true
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+        startAnimation()
         super.viewDidLoad()
     }
-   
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    
+    func viewDidAppear() {
+        self.deleteCell.accessoryType = .none
+    //    super.viewDidAppear()
     }
 }

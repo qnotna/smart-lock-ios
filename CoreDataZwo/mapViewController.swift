@@ -15,6 +15,7 @@ import MapKit
 class mapViewController : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var MapView: MKMapView!
+    @IBOutlet weak var mapButtonView: UIView!
     
     var locationNames = [NSManagedObject]()
     var locationLatitude = [NSManagedObject]()
@@ -22,26 +23,18 @@ class mapViewController : UIViewController, MKMapViewDelegate, CLLocationManager
     
     var locationManager: CLLocationManager!
     
-    @IBAction func openPopOver(_ sender: UIBarButtonItem) {
-        let mapPopOverViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MapPopUpID") as! mapPopUpViewController
-        self.addChildViewController(mapPopOverViewController)
-        mapPopOverViewController.view.frame = self.view.frame
-        self.view.addSubview(mapPopOverViewController.view)
-        mapPopOverViewController.didMove(toParentViewController: self)
-       }
+    let location = CLLocationCoordinate2DMake(51.06415,	13.75706)
+    let annotation = MKPointAnnotation()
     
     func showLocationAnntotaions() {
-        let location = CLLocationCoordinate2DMake(51.06415,	13.75706)
-        let annotation = MKPointAnnotation()
-
         let appDelegate = UIApplication.shared.delegate as! AppDelegate // CoreData Delegate
         let managedContext = appDelegate.managedObjectContext // CoreData AppDelegate
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "NameListEntity") // CoreData Entity
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "NameEntity") // CoreData Entity
         do {
             let results = try managedContext.fetch(fetchRequest)
             locationNames = results as! [NSManagedObject] // Schlössernamen als CoreData
             for locationNames in results {
-                annotation.title = "\((locationNames as AnyObject).value(forKey: "nameItem") as! String)"
+        //        annotation.title = "\((locationNames as AnyObject).value(forKey: "nameItem") as! String)"
             }
         }
         catch {
@@ -53,9 +46,9 @@ class mapViewController : UIViewController, MKMapViewDelegate, CLLocationManager
         annotation.subtitle = "Latitude, Longitude"
         MapView.addAnnotation(annotation)
     }
-    
-    override func viewDidLoad() {
 
+    override func viewDidLoad() {
+        self.mapButtonView.layer.cornerRadius = 15
         super.viewDidLoad()
         
         self.showLocationAnntotaions()
@@ -69,17 +62,35 @@ class mapViewController : UIViewController, MKMapViewDelegate, CLLocationManager
         MapView.delegate = self
        
     }
+    
+    @IBAction func showLocation(_ sender: UIButton) {
+        self.viewDidLoad()
+    }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let regionToZoom = MKCoordinateRegionMake((manager.location?.coordinate)!, MKCoordinateSpanMake(10,10))
         MapView.setRegion(regionToZoom, animated: true)
         locationManager.stopUpdatingLocation()
-    }
+  
+ /*   CLGeocoder().reverseGeocodeLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        let location = CLLocation(latitude: latitude, longitude: longitude)
+        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
+            if error != nil {
+                print(error)
+                return
+            }
+            else if (placemarks?.count)! > 0 {
+                let pm = placemarks![0]
+                let address = ABCreateStringWithAddressDictionary(pm.addressDictionary!, false)
+                print("\n\(address)")
+                if (pm.areasOfInterest?.count)! > 0 {
+                    let areaOfInterest = pm.areasOfInterest?[0]
+                    print(areaOfInterest!)
+                } else {
+                    print("No area of interest found.")
+                }
+            }
+        })
+    }*/
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
- 
-    }
-
-}
+    }}
